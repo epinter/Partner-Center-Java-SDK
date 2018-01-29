@@ -620,10 +620,13 @@ public class PartnerServiceProxy<TRequest, TResponse>
                 // That string trimming is due to the byte order mark coming on
                 // the beginning of the Json response, after it was changed to UTF-8
             	TResponse responseObj = null;
-                if ( response.getStatusLine().getStatusCode() != 204 && response.getEntity() != null ){                	
-	                responseBody =
-	                    StringHelper.fromInputStream( response.getEntity().getContent(), "UTF-8" ).substring( 1 );
-	                responseObj = getJsonConverter().readValue( responseBody, responseClass );
+                if ( response.getStatusLine().getStatusCode() != 204 && response.getEntity() != null ){
+                    responseBody = StringHelper.fromInputStream( response.getEntity().getContent(), "UTF-8" );
+                    if(!responseBody.substring(0,1).equals("{")) {
+                        responseBody = responseBody.substring(1);
+                    }
+
+                    responseObj = getJsonConverter().readValue( responseBody, responseClass );
                 }
                 response.close();
                 return responseObj;

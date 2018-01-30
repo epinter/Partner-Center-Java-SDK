@@ -375,6 +375,66 @@ public class LicenseBasedLineItem
     }
 
     /**
+     * Gets or sets the domain name.
+     */
+    private String __DomainName;
+
+    public String getDomainName()
+    {
+        return __DomainName;
+    }
+
+    public void setDomainName( String value )
+    {
+        __DomainName = value;
+    }
+
+    /**
+     * Gets or sets the billingCycleType.
+     */
+    private String __BillingCycleType;
+
+    public String getBillingCycleType()
+    {
+        return __BillingCycleType;
+    }
+
+    public void setBillingCycleType( String value )
+    {
+        __BillingCycleType = value;
+    }
+
+    /**
+     * Gets or sets the subscription description.
+     */
+    private String __SubscriptionDescription;
+
+    public String getSubscriptionDescription()
+    {
+        return __SubscriptionDescription;
+    }
+
+    public void setSubscriptionDescription( String value )
+    {
+        __SubscriptionDescription = value;
+    }
+
+    /**
+     * Gets or sets the subscription name.
+     */
+    private String __SubscriptionName;
+
+    public String getSubscriptionName()
+    {
+        return __SubscriptionName;
+    }
+
+    public void setSubscriptionName( String value )
+    {
+        __SubscriptionName = value;
+    }
+
+    /**
      * Returns the type of invoice line item
      * 
      * @return The type of invoice line item.

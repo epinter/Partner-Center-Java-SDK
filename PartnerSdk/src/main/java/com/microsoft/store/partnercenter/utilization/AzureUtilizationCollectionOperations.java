@@ -79,7 +79,7 @@ public class AzureUtilizationCollectionOperations
             	new KeyValuePair<String, String>
             	(
 	            	PartnerService.getInstance().getConfiguration().getApis().get( "GetAzureUtilizationRecords" ).getParameters().get( "StartTime" ),
-	            	startTime.toString( "yyyy-MM-ddTHH:mm:ssZ" ) 
+					startTime.toString( "yyyy-MM-dd'T'HH:mm:ssZ" )
             	) 
 	        );
         }
@@ -91,7 +91,7 @@ public class AzureUtilizationCollectionOperations
             	new KeyValuePair<String, String>
             	(
 	            	PartnerService.getInstance().getConfiguration().getApis().get( "GetAzureUtilizationRecords" ).getParameters().get( "EndTime" ),
-	            	endTime.toString( "yyyy-MM-ddTHH:mm:ssZ" ) 
+					endTime.toString( "yyyy-MM-dd'T'HH:mm:ssZ" )
             	) 
 	        );
         }

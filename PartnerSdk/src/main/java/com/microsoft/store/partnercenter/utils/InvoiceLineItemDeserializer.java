@@ -31,38 +31,38 @@ public class InvoiceLineItemDeserializer
     {
         ObjectMapper mapper = (ObjectMapper) parser.getCodec();
         JsonNode jsonNode = parser.readValueAsTree();
-        Object target = null;
+        InvoiceLineItem target = null;
         String billingProvider = jsonNode.get( "billingProvider" ).textValue();
         String invoiceLineItemType = jsonNode.get( "invoiceLineItemType" ).textValue();
         if ( invoiceLineItemType.equals( "usage_line_items" ) )
         {
             if ( billingProvider.equalsIgnoreCase( BillingProvider.AZURE.getUrlName() ) )
             {
-                target = mapper.readValue( parser, DailyUsageLineItem.class );
+                target = mapper.treeToValue(jsonNode, DailyUsageLineItem.class);
             }
         }
         else if ( invoiceLineItemType.equals( "billing_line_items" ) )
         {
             if ( billingProvider.equalsIgnoreCase( BillingProvider.AZURE.getUrlName() ) )
             {
-                target = mapper.readValue( parser, UsageBasedLineItem.class );
+                target = mapper.treeToValue(jsonNode, UsageBasedLineItem.class);
             }
             else if ( billingProvider.equalsIgnoreCase( BillingProvider.OFFICE.getUrlName() ) )
             {
-                target = mapper.readValue( parser, LicenseBasedLineItem.class );
+                target = mapper.treeToValue(jsonNode, LicenseBasedLineItem.class);
             }
         }
         else
         {
             throw new IOException(MessageFormat.format( "InvoiceLineItemConverter cannot deserialize invoice line items with type {0}", invoiceLineItemType));
         }
-        
+
         if (target == null)
         {
             throw new IOException(MessageFormat.format( "InvoiceLineItemConverter cannot deserialize invoice line items with type {0} and billing provider: {1}", invoiceLineItemType, billingProvider));
         }
-        
-        return (InvoiceLineItem) target;
+
+        return target;
 
     }
 

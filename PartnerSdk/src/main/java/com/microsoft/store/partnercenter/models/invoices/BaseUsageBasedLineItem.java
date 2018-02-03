@@ -309,4 +309,20 @@ public abstract class BaseUsageBasedLineItem
         return BillingProvider.AZURE;
     }
 
+
+    /**
+     * Gets or sets the customer commerce account Id.
+     */
+    private String __CustomerId;
+
+    public String getCustomerId()
+    {
+        return __CustomerId;
+    }
+
+    public void setCustomerId( String value )
+    {
+        __CustomerId = value;
+    }
+
 }
